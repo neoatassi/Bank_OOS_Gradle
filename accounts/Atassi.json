@@ -1,0 +1,52 @@
+[
+  {
+    "CLASSNAME": "IncomingTransfer",
+    "INSTANCE": {
+      "sender": "Max",
+      "recipient": "Atassi",
+      "date": "15.05.2001",
+      "amount": 500.0,
+      "description": "First transfer"
+    }
+  },
+  {
+    "CLASSNAME": "IncomingTransfer",
+    "INSTANCE": {
+      "sender": "Max",
+      "recipient": "Atassi",
+      "date": "15.05.2001",
+      "amount": 500.0,
+      "description": "First transfer"
+    }
+  },
+  {
+    "CLASSNAME": "IncomingTransfer",
+    "INSTANCE": {
+      "sender": "Andrew",
+      "recipient": "Atassi",
+      "date": "31.04.2021",
+      "amount": 300.0,
+      "description": "Second transfer"
+    }
+  },
+  {
+    "CLASSNAME": "OutgoingTransfer",
+    "INSTANCE": {
+      "sender": "Atassi",
+      "recipient": "Abu Bakr",
+      "date": "31.04.2021",
+      "amount": 200.0,
+      "description": "Second transfer"
+    }
+  },
+  {
+    "CLASSNAME": "Payment",
+    "INSTANCE": {
+      "incomingInterest": 0.3,
+      "outgoingInterest": 0.1,
+      "date": "03.01.1998",
+      "amount": 3000.0,
+      "description": "partial deposit"
+    }
+  }
+]

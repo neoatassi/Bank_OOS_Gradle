@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PrivateBankTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-13T14:14:02" hostname="DESKTOP-F0APU69" time="0.024">
+  <properties/>
+  <testcase name="testGetTransactions()" classname="PrivateBankTest" time="0.024"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
