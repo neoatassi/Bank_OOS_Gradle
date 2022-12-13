@@ -127,18 +127,22 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        PrivateBank musterbank = new PrivateBank("MusterBank", 0.3, 0.1, "blabla");
+        PrivateBank musterbank = new PrivateBank("MusterBank", 0.3, 0.1, "\\Bank_OOS_Gradle\\accounts/");
 
+        musterbank.deleteAccount("Bobby");
         //musterbank.getTransactions("Atassi");
-
+        musterbank.createAccount("Bobby");
+        musterbank.addTransaction("Bobby", new Payment("2012", 3000, "payment brother"));
+        musterbank.addTransaction("Bobby", new Payment("2020", 200, "payment dudi"));
+        musterbank.addTransaction("Bobby", new IncomingTransfer("2020", 200, "incominggg dudi"));
         System.out.println("HELLOOOOO");
 
 
-        createAccounts(musterbank);
+        //createAccounts(musterbank);
 
 
         //readAccounts(musterbank);
-        System.out.println(musterbank.getTransactions("Atassi"));
+        //System.out.println(musterbank.getTransactions("Atassi"));
         //System.out.println(musterbank.getTransactions("Muster"));
 
 
