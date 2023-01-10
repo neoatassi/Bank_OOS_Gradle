@@ -24,12 +24,25 @@ public class PrivateBankTest {
      */
     @BeforeEach
     @Test
-    void init() throws AccountAlreadyExistsException, IOException, AmountNotValidException {
+    void init() throws AccountAlreadyExistsException, IOException, AmountNotValidException, TransactionAlreadyExistException, AccountDoesNotExistException, TransactionAttributeException, ClassNotFoundException {
         assertDoesNotThrow(() -> {
-            musterbank = new PrivateBank("Muster Private Bank", 0.2, 0.5, "null");
+            musterbank = new PrivateBank("Muster Private Bank", 0.2, 0.5, null);
         });
-        musterbank.createAccount("Atassi");
+
+        try {
+            musterbank.createAccount("Atassi");
+        } catch (Exception e){
+
+        }
         payment = new Payment("11.05.2021", 1000, "deposit", 0.3, 0.1);
+    }
+
+
+    @AfterEach
+    @Disabled
+    void clearUp() throws AccountDoesNotExistException, IOException {
+        for(String account : musterbank.getAllAccounts())
+            musterbank.deleteAccount(account);
     }
 
     @Test

@@ -1,12 +1,12 @@
 [
   {
-    "CLASSNAME": "IncomingTransfer",
+    "CLASSNAME": "OutgoingTransfer",
     "INSTANCE": {
-      "sender": "Max",
-      "recipient": "Atassi",
-      "date": "15.05.2001",
+      "sender": "Atassi",
+      "recipient": "Atassi/Max",
+      "date": "2023-01-10",
       "amount": 500.0,
-      "description": "First transfer"
+      "description": "Donation"
     }
   }
 ]

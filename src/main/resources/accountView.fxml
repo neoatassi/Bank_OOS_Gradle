@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountViewController">
+  <children>
+    <MenuBar prefHeight="0.0" prefWidth="598.0" VBox.vgrow="NEVER">
+      <menus>
+            <Menu mnemonicParsing="false" text="Neue Transaktion">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#neueEinzahlung" text="Einzahlung" />
+                  <MenuItem mnemonicParsing="false" onAction="#neueUeberweisung" text="Überweisung" />
+              </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Sortierung">
+               <items>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#alle" selected="true" text="Alle anzeigen">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Sortierung" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#aufsteigend" text="Aufsteigend" toggleGroup="$Sortierung" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#absteigend" text="Absteigend" toggleGroup="$Sortierung" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#positiv" text="Nur positiv" toggleGroup="$Sortierung" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#negativ" text="Nur negativ" toggleGroup="$Sortierung" />
+               </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="328.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane prefHeight="375.0" prefWidth="640.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="346.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="150.0" minHeight="0.0" prefHeight="103.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ListView fx:id="transactionList" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#loescheTrans" text="Löschen" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu></ListView>
+                  <GridPane GridPane.rowIndex="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#changeScene" prefHeight="39.0" prefWidth="161.0" text="Zurück">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="kontostandLabel" prefHeight="30.0" prefWidth="321.0" text="Kontostand:" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="accountName" prefHeight="46.0" prefWidth="320.0" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

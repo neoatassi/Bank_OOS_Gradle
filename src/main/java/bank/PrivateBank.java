@@ -153,19 +153,18 @@ public class PrivateBank implements Bank {
      * @param account the account to be added
      * @throws AccountAlreadyExistsException
      */
-    @Override
-    public void createAccount(String account) throws AccountAlreadyExistsException, IOException {
-
-        if(!(accountsToTransactions.containsKey(account))){
-            List<Transaction> transaction= new ArrayList<Transaction>();
-            accountsToTransactions.put(account, transaction);
-
+    public void createAccount(String account) throws AccountAlreadyExistsException {
+        if(accountsToTransactions.containsKey(account))
+            throw new AccountAlreadyExistsException("Fehler: Account existiert schon");
+        else
+            accountsToTransactions.put(account, new ArrayList<Transaction>());
+        try {
+            writeAccount(account);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else {
-            throw new AccountAlreadyExistsException("Account already exists!");
-        }
-        writeAccount(account);
     }
+
 
     public void writeAccount(String account) throws IOException {
         //directoryName = "C:\\Users\\abdul\\IdeaProjects\\Bank_OOS_Gradle\\accounts/";
@@ -380,8 +379,21 @@ public class PrivateBank implements Bank {
 
     @Override
     public List<Transaction> getTransactionsByType(String account, boolean positive) {
-        return accountsToTransactions.get(account);
+        List<Transaction> typeList = new ArrayList<Transaction>();
+        for(Transaction t : accountsToTransactions.get(account)) {
+            if(t.calculate() >= 0) {
+                if(positive)
+                    typeList.add(t);
+            }
+            else {
+                if(!positive)
+                    typeList.add(t);
+            }
+        }
+        return typeList;
     }
+
+
 
     public void deleteAccount(String account) throws AccountDoesNotExistException, IOException {
         Path path = FileSystems.getDefault().getPath(directoryName+account+".json");
